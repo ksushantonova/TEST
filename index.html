@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #fff;
+      overflow: hidden;
+    }
+    h1 {
+      text-align: center;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .yes {
+      background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
+      color: #fff;
+    }
+    .no {
+      background-color: #ccc;
+      position: absolute;
+      transition: 0.5s;
+    }
+    .fullscreen-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      display: none;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="zag">Тест на гея</h1>
+    <div class="buttons">
+      <button class="yes">Да, я гей</button>
+      <button class="no">Нет, я не гей</button>
+    </div>
+  </div>
+  <div class="fullscreen-image"></div>
+
+  <script>
+    const yesBtn = document.querySelector('.yes');
+    const h1 = document.querySelector('.zag');
+    const fullscreenImage = document.querySelector('.fullscreen-image');
+    const noBtn = document.querySelector('.no');
+
+    yesBtn.addEventListener('click', () => {
+      fullscreenImage.style.backgroundImage = 'url("https://upload.wikimedia.org/wikipedia/ru/0/02/Гачимучи.jpg")';
+      fullscreenImage.style.display = 'block';
+      noBtn.style.display = 'none';
+      yesBtn.style.display = 'none';
+      h1.style.display = 'none';
+      alert('Я тоже гей!');
+    });
+
+    noBtn.addEventListener('mouseover', (e) => {
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
+      noBtn.style.left = newX + 'px';
+      noBtn.style.top = newY + 'px';
+    });
+  </script>
+</body>
+</html>
